@@ -1,17 +1,3 @@
-resource "kubernetes_namespace" "hhh" {
-  metadata {
-    annotations = {
-      name = "${var.namespace}"
-    }
-
-    labels = {
-      mylabel = "${var.namespace}"
-    }
-
-    name = "${var.namespace}"
-  }
-}
-
 resource "kubernetes_deployment" "new_app" {
   metadata {
     name = "${var.deployment_name}"

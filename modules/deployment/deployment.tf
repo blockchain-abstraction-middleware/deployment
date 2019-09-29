@@ -1,4 +1,4 @@
-resource "kubernetes_deployment" "new_app" {
+resource "kubernetes_deployment" "main" {
   metadata {
     name = "${var.deployment_name}"
     namespace = "${var.namespace}"
@@ -31,7 +31,4 @@ resource "kubernetes_deployment" "new_app" {
       }
     }
   }
-}
-output "ip_address" {
-  value = "${kubernetes_deployment.new_app.id}"
 }

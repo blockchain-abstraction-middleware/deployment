@@ -1,5 +1,3 @@
-variable "do_token" { default = "" }
-
 variable "docker_image" {
   default = "patches12345/hope"
 }

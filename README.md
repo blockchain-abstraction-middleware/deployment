@@ -1,16 +1,19 @@
 # Terraform deployment
 
 ## Overview
-Terraform script for deploying a service to a k8s pod on Digital Ocean
+Terraform script for adding a deployment to k8s pods
 
 Ensure you have `kubectl` set up, and connect to your k8s cluster
 
-Add your digital ocean token to `variables.tf`
-
-Add your docker image repo to `variables.tf`
+Update the variables in `/deployments/main.tf`  to change deployment config
 
 ## Prerequisits
-Install [teraform](https://www.terraform.io/)
+Install [terraform](https://www.terraform.io/)
+
+Create a namespace
+```shell
+kubectl create namespace go-apis
+```
 
 Export the PG_URI environment variable to connect to the remote tf state
 ```shell
@@ -19,10 +22,13 @@ export PG_URI=postgresql://<name>:<pw>@<host>:<port>/terraform_backend?sslmode=r
 
 - Deploy service on each pod
 ```shell
-./deploy.sh
+make deploy
 ```
 
 - Destroy service
 ```shell
-./destroy.sh
+make destroy
 ```
+
+### Beware of Dragons
+- On fresh install we need to run `make deploy` twice ?

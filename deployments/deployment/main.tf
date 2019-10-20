@@ -1,8 +1,5 @@
 terraform {
   backend "pg" {
-    workspaces {
-      name = "go-apis"
-    }
   }
 }
 

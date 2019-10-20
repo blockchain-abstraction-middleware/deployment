@@ -3,9 +3,9 @@ deploy:
 		-backend-config="conn_str=$$PG_URI" \
 	./deployments/deployment
 
-	$(eval workspace=$(shell terraform workspace new go-apis ./deployments/deployment))
+	$(eval workspace=$(shell terraform workspace new default))
 
-	terraform workspace select go-apis ./deployments/deployment
+	terraform workspace select default ./deployments/deployment
 	terraform apply -auto-approve ./deployments/deployment
 
 destroy:

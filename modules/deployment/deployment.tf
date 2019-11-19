@@ -24,11 +24,35 @@ resource "kubernetes_deployment" "main" {
       }
 
       spec {
+        volume {
+          
+          name = "secret-key"
+
+          secret {
+            secret_name = "secret-key"
+          }
+        }
+
         container {
           image = "${var.docker_image}"
           name  = "${var.deployment_name}"
+
+          volume_mount {
+            name = "secret-key"
+            mount_path = ".secret-key/"
+          }
+
+          env {
+            name="CONFIG_PATH"
+            value="${var.config_path}"
+          }
+
+          env {
+            name="CONFIG_FILE"
+            value="${var.config_file}"
+          }
         }
       }
-    }
+    } 
   }
 }

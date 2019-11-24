@@ -3,7 +3,7 @@ resource "kubernetes_deployment" "main" {
     name = "${var.deployment_name}"
     namespace = "${var.namespace}"
     labels = {
-      test = "${var.deployment_name}"
+      app = "${var.deployment_name}"
     }
   }
 
@@ -12,14 +12,14 @@ resource "kubernetes_deployment" "main" {
 
     selector {
       match_labels = {
-        test = "${var.deployment_name}"
+        app = "${var.deployment_name}"
       }
     }
 
     template {
       metadata {
         labels = {
-          test = "${var.deployment_name}"
+          app = "${var.deployment_name}"
         }
       }
 

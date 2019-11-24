@@ -1,5 +1,5 @@
 variable "docker_image" {
-  default = "patches12345/hope"
+  default = "bamdockerhub/game-abstraction-middleware:0.0.2"
 }
 
 variable "deployment_name" {
@@ -15,5 +15,5 @@ variable "config_file" {
 }
 
 variable "config_path" {
-  default = "/config"
+  default = "/config/"
 }
